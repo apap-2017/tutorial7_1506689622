@@ -62,5 +62,11 @@ public class StudentServiceDatabase implements StudentService
     	log.info("select course with idCourse {}", idCourse);
     	return studentMapper.selectCourse(idCourse);
     }
+    
+    // override selectAllCourses pada interface StudentService
+    @Override
+    public List<CourseModel> selectAllCourses(){
+    	return studentMapper.selectAllCourses();
+    }
 
 }

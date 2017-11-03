@@ -19,4 +19,6 @@ public interface StudentService
     
     // menambahkan method selectCourse pada interface
     CourseModel selectCourse (String idCourse);
+    
+    List<CourseModel> selectAllCourses ();
 }
