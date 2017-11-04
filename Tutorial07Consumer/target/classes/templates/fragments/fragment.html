@@ -4,6 +4,7 @@
 		<div th:fragment='title'>
 			<title th:if="${#httpServletRequest.RequestURI=='/'}">Index</title>
 			<title th:if="${#httpServletRequest.RequestURI=='/student/viewall'}">View All Students</title>
+			<title th:if="${#httpServletRequest.RequestURI=='/course/viewall'}">View All Courses</title>
 			<title th:if="${#httpServletRequest.RequestURI=='/student/add'}">Add Student</title>
 			<title th:if="${#httpServletRequest.RequestURI=='/student/add/submit'}">Add</title>
 			<title th:if="${#httpServletRequest.RequestURI=='/student/update/'}">Update Student</title>
@@ -53,15 +54,10 @@
 					</form>
 				</div>
 			</nav>
-			<!-- ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/student/viewall">Daftar Mahasiswa</a></li>
-				<li><a href="/student/add">Menambah Mahasiswa</a></li>
-			</ul-->
 		</div>
 		<div th:fragment="footer">
 			<hr/>
-			<h4>Mata Kuliah APAP</h4>
+			<h6>Tutorial 07 - Mata Kuliah APAP</h6>
 		</div>
 	</body>
 </html>

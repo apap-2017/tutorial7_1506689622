@@ -56,7 +56,7 @@ public class StudentServiceDatabase implements StudentService
     }
     
     
-    // Melakukan override method selectCourse pada interface Student Service
+    //Melakukan override method selectCourse pada interface Student Service
     @Override
     public CourseModel selectCourse (String idCourse) {
     	log.info("select course with idCourse {}", idCourse);

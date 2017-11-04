@@ -18,5 +18,5 @@ public interface StudentService
     void updateStudent (StudentModel student);
     
     // menambahkan method selectCourse pada interface
-    CourseModel selectCourse (String idCourse);
+   CourseModel selectCourse (String idCourse);
 }

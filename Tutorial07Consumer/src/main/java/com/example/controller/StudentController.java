@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.CourseModel;
 import com.example.model.StudentModel;
+import com.example.service.CourseService;
 import com.example.service.StudentService;
 
 @Controller
@@ -20,8 +21,10 @@ public class StudentController
 {
     @Autowired
     StudentService studentDAO;
-
-
+    
+    @Autowired
+    CourseService courseDAO;
+    
     @RequestMapping("/")
     public String index ()
     {
@@ -118,16 +121,6 @@ public class StudentController
     }
     
     @RequestMapping(value = "/student/update/submit", method = RequestMethod.POST)
-    /*public String updateSubmit (
-    		@RequestParam(value = "npm", required = false) String npm,
-    		@RequestParam(value = "name", required = false) String name,
-    		@RequestParam(value = "gpa", required = false) double gpa
-    )
-    {
-    	 StudentModel student = new StudentModel (npm, name, gpa);
-         studentDAO.updateStudent (student);
-         return "success-update";
-    }*/
     public String updateSubmit(@ModelAttribute StudentModel student) 
     {
     	 studentDAO.updateStudent (student);
@@ -139,7 +132,7 @@ public class StudentController
     @RequestMapping("/course/view/{idCourse}")
     public String viewCourse(Model model,
             @PathVariable(value = "idCourse") String idCourse) {
-    	CourseModel course = studentDAO.selectCourse (idCourse);
+    	CourseModel course = courseDAO.selectCourse (idCourse);
     	if (course != null) {
             model.addAttribute ("course", course);
             return "view-course";
@@ -147,6 +140,14 @@ public class StudentController
         	model.addAttribute ("idCourse", idCourse);
         	return "not-found-course";
         }
+    }
+    
+    // Untuk Halaman view All COURSE
+    @RequestMapping("/course/viewall")
+    public String viewallCourse(Model model) {
+    	List<CourseModel> courses = courseDAO.selectAllCourses();
+    	model.addAttribute ("courses", courses);
+        return "viewall-course";
     }
     
     
